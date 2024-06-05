@@ -19,4 +19,5 @@
 git clone https://github.com/messense/aliyundrive-webdav package/messense
 git clone https://github.com/sirpdboy/luci-app-lucky.git package/lucky
 git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
-git clone https://github.com/sirpdboy/sirpdboy-package package/sirpdboy-package
+echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
+echo 'src-git opentopd  https://github.com/sirpdboy/sirpdboy-package' >> feeds.conf.default
