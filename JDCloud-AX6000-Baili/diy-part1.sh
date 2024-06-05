@@ -19,3 +19,4 @@
 git clone https://github.com/messense/aliyundrive-webdav package/messense
 git clone https://github.com/sirpdboy/luci-app-lucky.git package/lucky
 git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+git clone https://github.com/siropboy/sirpdboy-package package/sirpdboy-package
