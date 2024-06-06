@@ -287,29 +287,33 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
         touch release.txt
-        echo "- 使用源码：${{ env.REPO_URL }}" >> release.txt
-        echo "- 登录地址：${{ env.IP_ADDR }}" >> release.txt
+        echo "# 本次固件详情" >> release.txt
+        echo "## 基本信息" >> release.txt
+        echo "- 构建使用源码：${{ env.REPO_URL }}" >> release.txt
+        echo "- 后台登录地址：${{ env.IP_ADDR }}" >> release.txt
+        echo "## 固件特点" >> release.txt
         if [[ "${{ env.MAC_FIX }}" == '-MAC_fix' ]]; then
-               echo "- 修改源码 使用原厂的MAC地址顺序" >> release.txt
+               echo "- 1. 使用原厂的MAC地址顺序" >> release.txt
         else
-               echo "- 未修改源码中的MAC地址顺序" >> release.txt
+               echo "- 1. 未修改源码中的MAC地址顺序，网卡序号倒序" >> release.txt
         fi
         echo "- mt_wifi firmware: ${{ env.WA_FW }}" >> release.txt
         echo "- &ensp;&ensp;warp firmware: ${{ env.WO_FW }}" >> release.txt
         if [[ "${{ env.SWITCH }}" == '-gsw' ]]; then
-               echo "- 使用GSW交换机驱动（非DSA）" >> release.txt
+               echo "- 2. 使用GSW交换机驱动（非DSA）" >> release.txt
         else
-               echo "- 使用DSA交换机驱动" >> release.txt
+               echo "- 2. 使用DSA交换机驱动" >> release.txt
         fi
         if [[ "${{ env.WIFI_INTERFACE }}" == '-mtwifi' ]]; then
-                echo "- 使用hanwckf mtwifi-cfg原生luci无线配置工具" >> release.txt
+                echo "- 3. 使用hanwckf mtwifi-cfg原生luci无线配置工具" >> release.txt
         else
-                echo "- 使用mtk-sdk luci-app-mtk无线配置工具" >> release.txt
+                echo "- 3. 使用mtk-sdk luci-app-mtk无线配置工具" >> release.txt
         fi
         if [[ "${{ env.BUILD_DOCKERMAN }}" == '-docker' ]]; then
-                echo "- 已编译luci-app-dockerman" >> release.txt
+                echo "- 4. 已编译luci-app-dockerman" >> release.txt
         else
-                echo "- 未编译luci-app-dockerman" >> release.txt
+                echo "- 4. 未编译luci-app-dockerman" >> release.txt
+        echo "还有很多，不一一列举" >> release.txt
         fi
         echo "release_tag=${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.DEVICE_NAME }}${{ env.SWITCH }}${{ env.WIFI_INTERFACE }}${{ env.BUILD_DOCKERMAN }}" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
