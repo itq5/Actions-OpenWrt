@@ -15,14 +15,14 @@ on:
   workflow_dispatch:
     inputs:
       MAC_ORDER:
-        description: 'Use the original MAC address order'
+        description: '使用官方原始MAC地址顺序'
         required: true
         default: true
         type: boolean
       WA_FW:
-        description: 'Choose mt_wifi firmware'
+        description: '选择wifi固件'
         required: true
-        default: 'mt7986-fw-20230808'
+        default: 'mt7986-fw-jdc'
         type: choice
         options:
         - no-new-fw
@@ -32,9 +32,9 @@ on:
         - mt7986-fw-20230808
         - mt7986-fw-20231024
       WO_FW:
-        description: 'Choose warp firmware'
+        description: '选择warp固件'
         required: true
-        default: 'mt7986-fw-20230808'
+        default: 'mt7986-fw-jdc'
         type: choice
         options:
         - no-new-fw
@@ -43,22 +43,22 @@ on:
         - mt7986-fw-20230808
         - mt7986-fw-20231024
       GSW:
-        description: 'Use GSW switch driver (non-DSA)'
+        description: '交换机模式使用GSW驱动（默认是DSA）'
         required: true
         default: false
         type: boolean
       APP_MTK:
-        description: 'Use luci-app-mtk wifi config'
+        description: '使用旧的luci-app-mtk无线配置工具'
         required: true
         default: false
         type: boolean
       NO_DOCKERMAN:
-        description: 'Not build luci-app-dockerman'
+        description: '不构建dockerman'
         required: true
         default: false
         type: boolean
       ssh:
-        description: 'SSH connection to Actions'
+        description: '通过SSH连接到Actions'
         required: false
         default: 'false'
 #  schedule:
